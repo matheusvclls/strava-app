@@ -34,17 +34,20 @@ def get_activity_by_id(activity_id : int):
     )
     return response
 
-def refresh_token(payload={}):
+def refresh_token():
     response = requests.post(
         f"https://www.strava.com/oauth/token",
-        params=payload
+        
+        params={
+        "client_id":os.environ['CLIENT_ID']
+        ,"client_secret":os.environ['CLIENT_SECRET']
+        ,"grant_type":"refresh_token"
+        ,"refresh_token":os.environ['refresh_token']
+        }
     )
     return response
 
 
 #print(get_activities({"page":"3"}).json())
-#print(get_activity_by_id(8268720287).json())
-print(refresh_token({"client_id":os.environ['CLIENT_ID']
-                    ,"client_secret":os.environ['CLIENT_SECRET']
-                    ,"grant_type":"refresh_token"
-                    ,"refresh_token":os.environ['refresh_token']}))
+print(get_activity_by_id(8268720287).json())
+#print(refresh_token().json())
