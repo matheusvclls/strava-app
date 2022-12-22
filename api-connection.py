@@ -25,7 +25,7 @@ def get_activities(payload={}):
     )
     return response
 
-def get_activities_by_id(activity_id : int):
+def get_activity_by_id(activity_id : int):
     response = requests.get(
         f"{BASE_URL}/activities/{activity_id}",
         headers={
@@ -43,7 +43,7 @@ def refresh_token(payload={}):
 
 
 #print(get_activities({"page":"3"}).json())
-print(get_activities_by_id(8268720287).json())
+print(get_activity_by_id(8268720287).json())
 #print(refresh_token({"client_id":os.environ['CLIENT_ID']
 #                    ,"client_secret":os.environ['CLIENT_SECRET']
 #                    ,"grant_type":"refresh_token"
