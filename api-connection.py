@@ -34,6 +34,15 @@ def get_activity_by_id(activity_id : int):
     )
     return response
 
+def get_athlete_stats(athlete_id : int):
+    response = requests.get(
+        f"{BASE_URL}/athletes/{athlete_id}/stats",
+        headers={
+            "Authorization": f"Bearer {token}",
+        }
+    )
+    return response
+
 def refresh_token():
     response = requests.post(
         f"https://www.strava.com/oauth/token",
@@ -49,5 +58,5 @@ def refresh_token():
 
 
 #print(get_activities({"page":"3"}).json())
-print(get_activity_by_id(8268720287).json())
+#print(get_athlete_stats(6115740).json())
 #print(refresh_token().json())
