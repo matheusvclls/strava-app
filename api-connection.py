@@ -25,5 +25,26 @@ def get_activities(payload={}):
     )
     return response
 
+def get_activities(activity_id : int):
+    response = requests.get(
+        f"{BASE_URL}/activities/{activity_id}",
+        headers={
+            "Authorization": f"Bearer {token}",
+        }
+    )
+    return response
 
-print(get_activities({"page":"3"}).json())
+def refresh_token(payload={}):
+    response = requests.get(
+        f"https://www.strava.com/oauth/token",
+        params=payload
+    )
+    return response
+
+
+#print(get_activities({"page":"3"}).json())
+print(get_activities(8268720287).json())
+#print(refresh_token({"client_id":os.environ['CLIENT_ID']
+#                    ,"client_secret":os.environ['CLIENT_SECRET']
+#                    ,"grant_type":"refresh_token"
+#                    ,"refresh_token":os.environ['refresh_token']}))
