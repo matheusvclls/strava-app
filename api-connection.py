@@ -6,6 +6,7 @@ load_dotenv()
 BASE_URL = "https://www.strava.com/api/v3"
 token = os.environ["TOKEN"]
 
+
 def get_athlete_info():
     response = requests.get(
         f"{BASE_URL}/athlete",
