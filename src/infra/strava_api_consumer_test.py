@@ -24,4 +24,17 @@ def test_get_activities_empty_list():
     get_activities_response = strava_api_consumer.get_activities(page=page)
 
     assert get_activities_response.response == []
-        
+
+def test_get_activity_by_id():
+    ''' Test get_activities method when returns an empty list'''
+
+    strava_api_consumer=StravaApiConsumer()
+    activity_id=8281525195
+
+    get_activity_by_id_response = strava_api_consumer.get_activity_by_id(activity_id=activity_id)
+    #print(get_activity_by_id_response.response)
+    #print(get_activity_by_id_response.status_code)
+
+    assert get_activity_by_id_response.status_code == 200
+    assert isinstance(get_activity_by_id_response.response, dict)
+
