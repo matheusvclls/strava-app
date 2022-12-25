@@ -99,6 +99,11 @@ class StravaApiConsumer():
             return self.get_activity_by_id_response(
                 status_code=status_code, request=req, response=response.json()
             )
+        else:
+            raise HttpRequestError(
+                message=response.json()['message'], status_code=status_code                
+            )
+
 
     @classmethod
     def __send_http_request(cls, req_prepared: Type[Request]) -> any:

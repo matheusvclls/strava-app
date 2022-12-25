@@ -1,3 +1,4 @@
+from src.errors.http_request_error import HttpRequestError
 from .strava_api_consumer import StravaApiConsumer
 
 def test_get_activities():
@@ -37,4 +38,20 @@ def test_get_activity_by_id():
 
     assert get_activity_by_id_response.status_code == 200
     assert isinstance(get_activity_by_id_response.response, dict)
+
+def test_get_activity_by_id_http_error():
+    ''' Test get_activities method when returns an empty list'''
+
+    strava_api_consumer=StravaApiConsumer()
+    activity_id=8281525194
+
+    try:
+        get_activity_by_id_response = strava_api_consumer.get_activity_by_id(activity_id=activity_id)
+        assert True is False
+    except HttpRequestError as error:
+        #print(error.message)
+        #print(error.status_code)
+
+        assert error.status_code != 200
+        assert isinstance(error.message, str)
 
