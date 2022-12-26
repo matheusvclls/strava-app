@@ -1,9 +1,0 @@
-repos:
--   repo: local
-    hooks:
-      - id: requirements
-        name: requirements
-        entry: batch 'pip freeze > requirements.txt'
-        language: system
-        pass_filenames: false
-        stages: [commit]
