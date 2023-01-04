@@ -10,13 +10,13 @@ from src.presenters.errors.error_controller import handle_errors
 
 strava_routes = APIRouter()
 
-@strava_routes.get('/api/strava/test')
+@strava_routes.get('/api/strava/')
 def get_test_fast_api(request: RequestFastApi):
     print(request.query_params)
     return {'hello': 'world!'}
 
 @strava_routes.get("/api/strava/list")
-async def get_running_collector_list(request: RequestFastApi):
+async def get_running_collector_list(request: RequestFastApi, page: int):
 
     response = None
     controller = get_running_collector_composer()
